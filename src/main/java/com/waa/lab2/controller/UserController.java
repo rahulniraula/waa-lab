@@ -52,7 +52,8 @@ public class UserController {
     }
 
     @GetMapping("/filter")
-    public List<UserDto> filterUsers(@RequestParam(name="min-count",required = false) int minCount){
+    public List<UserDto> filterUsers(
+            @RequestParam(name="min-count",required = false) int minCount){
         return userService.filterUser(minCount);
     }
 }
