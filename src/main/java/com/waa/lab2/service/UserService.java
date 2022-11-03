@@ -17,4 +17,6 @@ public interface UserService {
     public UserDto createPostOfUser(long userId, PostDto postDto);
 
     public CommentDto createComment(long userId, long postId, CommentDto commentDto);
+
+    public List<UserDto> filterUser(int postCount);
 }

@@ -66,4 +66,9 @@ public class UserServiceImpl implements UserService{
         entityManager.persist(post);
         return commentDto;
     }
+    @Override
+    public List<UserDto> filterUser(int postCount){
+        List<User> userByPostCount = userRepo.findUserByPostCount(postCount);
+        return userByPostCount.stream().map(u->modelMapper.map(u,UserDto.class)).toList();
+    }
 }

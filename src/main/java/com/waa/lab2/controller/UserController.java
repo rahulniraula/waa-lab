@@ -50,4 +50,9 @@ public class UserController {
     public CommentDto createComment(@PathVariable long userId, @PathVariable long postId,@RequestBody CommentDto commentDto){
         return userService.createComment(userId,postId,commentDto);
     }
+
+    @GetMapping("/filter")
+    public List<UserDto> filterUsers(@RequestParam(name="min-count",required = false) int minCount){
+        return userService.filterUser(minCount);
+    }
 }
