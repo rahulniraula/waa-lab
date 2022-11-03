@@ -12,5 +12,5 @@ import java.util.List;
 @NoArgsConstructor
 public class UserDto {
     private String name;
-    List<PostDto> posts;
+//    List<PostDto> posts;
 }

@@ -2,6 +2,7 @@ package com.waa.lab2.service;
 
 
 import com.waa.lab2.domain.User;
+import com.waa.lab2.dto.incoming.CommentDto;
 import com.waa.lab2.dto.incoming.PostDto;
 import com.waa.lab2.dto.incoming.UserDto;
 
@@ -14,4 +15,6 @@ public interface UserService {
     void deleteById(Long id);
     UserDto getPostsOfUser(long id);
     public UserDto createPostOfUser(long userId, PostDto postDto);
+
+    public CommentDto createComment(long userId, long postId, CommentDto commentDto);
 }

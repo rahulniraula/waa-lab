@@ -1,7 +1,9 @@
 package com.waa.lab2.service;
 
+import com.waa.lab2.domain.Comment;
 import com.waa.lab2.domain.Post;
 import com.waa.lab2.domain.User;
+import com.waa.lab2.dto.incoming.CommentDto;
 import com.waa.lab2.dto.incoming.PostDto;
 import com.waa.lab2.dto.incoming.UserDto;
 import com.waa.lab2.repo.UserRepo;
@@ -10,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,6 +27,8 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private ModelMapper modelMapper;
+    @PersistenceContext
+    private EntityManager entityManager;
     @Override
     public UserDto findById(long id) {
         return modelMapper.map(userRepo.findById(id).orElse(null),UserDto.class);
@@ -51,5 +58,12 @@ public class UserServiceImpl implements UserService{
         user.getPosts().add(modelMapper.map(postDto, Post.class));
         var u=userRepo.save(user);
         return modelMapper.map(u, UserDto.class);
+    }
+    @Transactional
+    public CommentDto createComment(long userId, long postId, CommentDto commentDto){
+        Post post=entityManager.find(Post.class,postId);
+        post.getComments().add(modelMapper.map(commentDto, Comment.class));
+        entityManager.persist(post);
+        return commentDto;
     }
 }

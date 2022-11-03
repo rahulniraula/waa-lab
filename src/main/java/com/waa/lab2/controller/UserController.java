@@ -1,6 +1,7 @@
 package com.waa.lab2.controller;
 
 import com.waa.lab2.domain.User;
+import com.waa.lab2.dto.incoming.CommentDto;
 import com.waa.lab2.dto.incoming.PostDto;
 import com.waa.lab2.dto.incoming.UserDto;
 import com.waa.lab2.service.UserService;
@@ -41,5 +42,12 @@ public class UserController {
     @PostMapping("/{id}/posts")
     public UserDto createPostOfUser(@PathVariable("id") long userId, @RequestBody PostDto postDto){
         return userService.createPostOfUser(userId,postDto);
+    }
+    /**
+     * Now Lab 3 begins
+     */
+    @PostMapping("/{userId}/posts/{postId}/comments")
+    public CommentDto createComment(@PathVariable long userId, @PathVariable long postId,@RequestBody CommentDto commentDto){
+        return userService.createComment(userId,postId,commentDto);
     }
 }
