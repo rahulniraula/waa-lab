@@ -4,6 +4,7 @@ import com.waa.lab2.domain.User;
 import com.waa.lab2.dto.incoming.CommentDto;
 import com.waa.lab2.dto.incoming.PostDto;
 import com.waa.lab2.dto.incoming.UserDto;
+import com.waa.lab2.service.CommentService;
 import com.waa.lab2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private CommentService commentService;
     @GetMapping("/")
     public List<UserDto> getAll(){
         return userService.findAll();
@@ -51,6 +54,10 @@ public class UserController {
         return userService.createComment(userId,postId,commentDto);
     }
 
+    @GetMapping("/{userId}/posts/{postId}/comments/{commentId}")
+    public CommentDto getComment(@PathVariable long commentId){
+        return commentService.findById(commentId);
+    }
     @GetMapping("/filter")
     public List<UserDto> filterUsers(
             @RequestParam(name="min-count",required = false) Integer minCount,
