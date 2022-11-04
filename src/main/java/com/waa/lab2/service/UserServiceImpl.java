@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService{
         return commentDto;
     }
     @Override
-    public List<UserDto> filterUser(int postCount){
+    public List<UserDto> filterUser(int postCount,String postTitle){
         List<User> userByPostCount = userRepo.findUserByPostCount(postCount);
         return userByPostCount.stream().map(u->modelMapper.map(u,UserDto.class)).toList();
     }
