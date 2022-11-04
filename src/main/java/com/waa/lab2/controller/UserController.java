@@ -53,9 +53,14 @@ public class UserController {
 
     @GetMapping("/filter")
     public List<UserDto> filterUsers(
-            @RequestParam(name="min-count",required = false) int minCount,
-            @RequestParam(required = false) String postTitle
+            @RequestParam(name="min-count",required = false) Integer minCount,
+            @RequestParam(name ="post-title",required = false) String postTitle
     ){
-        return userService.filterUser(minCount,postTitle);
+        if(minCount!=null){
+            return userService.filterUser(minCount);
+        }else{
+            return userService.findUsersWhosePostTitleContains(postTitle);
+        }
+
     }
 }
