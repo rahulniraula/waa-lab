@@ -1,5 +1,6 @@
 package com.waa.lab2.controller;
 
+import com.waa.lab2.aspect.annotation.ExecutionTime;
 import com.waa.lab2.domain.User;
 import com.waa.lab2.dto.incoming.CommentDto;
 import com.waa.lab2.dto.incoming.PostDto;
@@ -26,6 +27,7 @@ public class UserController {
         return userService.findAll();
     }
     @GetMapping("/{id}")
+    @ExecutionTime
     public UserDto findById(@PathVariable long id){
         return userService.findById(id);
     }

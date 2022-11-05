@@ -21,4 +21,6 @@ public class Logger {
     private long transactionId;
     Date date;
     LocalDateTime time;
+    String principal;
+    String operation;
 }
