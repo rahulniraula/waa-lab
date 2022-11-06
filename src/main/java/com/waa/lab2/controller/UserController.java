@@ -28,7 +28,8 @@ public class UserController {
     }
     @GetMapping("/{id}")
     @ExecutionTime
-    public UserDto findById(@PathVariable long id){
+    public UserDto findById(@PathVariable long id) throws Exception {
+//        throw new Exception("Unreachable code");
         return userService.findById(id);
     }
     @PostMapping("/")

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Component
@@ -24,7 +25,7 @@ public class Logger {
     public void log(JoinPoint joinPoint){
         com.waa.lab2.domain.Logger logObj=new com.waa.lab2.domain.Logger();
         logObj.setDate(LocalDate.now());
-        logObj.setTime(LocalDateTime.now());
+        logObj.setTime(LocalTime.now());
         logObj.setPrincipal("Current logged in user");
         logObj.setOperation(joinPoint.getSignature().toString());
         System.out.println(joinPoint.getSignature().toString());

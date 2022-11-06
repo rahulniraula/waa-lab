@@ -9,20 +9,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Date;
 
-@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Logger {
+@Entity
+public class Exception {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long transactionId;
-    LocalDate date;
-    LocalTime time;
-    String principal;
-    String operation;
+    private int transactionId;
+    private LocalDate date;
+    private LocalTime time;
+    private String principal;
+    private String operation;
+    private String exceptionType;
+
 }
