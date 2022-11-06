@@ -25,7 +25,7 @@ public class ExceptionAspect {
     public void logExceptionsToDatabase(Throwable ex){
         Exception exception=new Exception();
         exception.setExceptionType(ex.toString());
-        exception.setOperation("");
+        exception.setOperation(ex.getMessage());
         exception.setTime(LocalTime.now());
         exception.setDate(LocalDate.now());
         exception.setPrincipal("Logged in User");
