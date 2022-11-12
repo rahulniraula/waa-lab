@@ -77,11 +77,11 @@ public class JwtUtil {
                 .signWith(SignatureAlgorithm.HS512,secret).compact();
     }
     public String getUsernameFromToken(String token){
-         try{
+//         try{
              return getAllClaimsFromToken(token).getSubject();
-         }catch (Exception e){
-             System.out.println(e.getMessage());
-         }
-         return "";
+//         }catch (Exception e){
+//             System.out.println(e.getMessage());
+//         }
+//         return "";
     }
 }
