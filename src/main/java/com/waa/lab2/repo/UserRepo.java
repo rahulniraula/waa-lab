@@ -14,4 +14,6 @@ public interface UserRepo extends CrudRepository<User,Long> {
 
     @Query(value = "select * from users join post on users.id = post.user_id where post.title LIKE %:postTitle%",nativeQuery = true)
     List<User> findUsersWhosePostTitleContains(@Param("postTitle") String postTitle);
+
+    User findByEmail(String email);
 }

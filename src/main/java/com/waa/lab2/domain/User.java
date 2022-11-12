@@ -16,10 +16,14 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-
-    String name;
+    String email;
+    String password;
+    String firstname;
+    String lastname;
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     List<Post> posts;
+    @ManyToMany(fetch = FetchType.EAGER)
+    List<Role> roles;
 }
