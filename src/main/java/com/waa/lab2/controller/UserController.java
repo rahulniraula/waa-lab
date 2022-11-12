@@ -6,9 +6,11 @@ import com.waa.lab2.dto.incoming.CommentDto;
 import com.waa.lab2.dto.incoming.PostDto;
 import com.waa.lab2.dto.incoming.UserDto;
 import com.waa.lab2.service.CommentService;
+import com.waa.lab2.service.UserDetails;
 import com.waa.lab2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +24,7 @@ public class UserController {
 
     @Autowired
     private CommentService commentService;
+
     @GetMapping("/")
     public List<UserDto> getAll(){
         return userService.findAll();
@@ -46,7 +49,8 @@ public class UserController {
     }
     @PostMapping("/{id}/posts")
     public UserDto createPostOfUser(@PathVariable("id") long userId, @RequestBody PostDto postDto){
-        return userService.createPostOfUser(userId,postDto);
+        var a=(UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return userService.createPostOfUser(a.getId(),postDto);
     }
     /**
      * Now Lab 3 begins

@@ -11,10 +11,12 @@ import java.util.stream.Collectors;
 
 public class UserDetails implements org.springframework.security.core.userdetails.UserDetails {
     private String email;
+    private long id;
     private String password;
     private List<Role> roles;
 
     public UserDetails(User user){
+        this.id=user.getId();
         this.email=user.getEmail();
         this.password=user.getPassword();
         this.roles=user.getRoles();
@@ -52,5 +54,8 @@ public class UserDetails implements org.springframework.security.core.userdetail
     @Override
     public boolean isEnabled() {
         return true;
+    }
+    public long getId(){
+        return id;
     }
 }

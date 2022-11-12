@@ -11,6 +11,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDto {
-    private String name;
+    private String firstname;
+    String lastname;
+    String email;
     List<PostDto> posts;
 }
