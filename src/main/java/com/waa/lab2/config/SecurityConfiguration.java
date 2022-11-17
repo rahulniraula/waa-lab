@@ -36,11 +36,11 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.csrf().disable()
+        httpSecurity.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/v1/auth/**").permitAll()
-                .antMatchers("/api/v1/admin/**").hasAuthority("ADMIN")
-                .antMatchers("/api/v1/posts").hasAnyAuthority("ADMIN","USER")
+                .antMatchers("/api/v1/**").permitAll()
+//                .antMatchers("/api/v1/admin/**").hasAuthority("ADMIN")
+//                .antMatchers("/api/v1/posts").hasAnyAuthority("ADMIN","USER")
                 .anyRequest()
                 .authenticated()
                 .and()

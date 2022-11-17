@@ -24,3 +24,6 @@ VALUES (3, 2);
 -- VALUES (2, 'iPad', 900, 1);
 -- INSERT INTO product (id, name, price, id_user)
 -- VALUES (3, 'Pen', 5, 1);
+insert into  post(author,content,title,user_id) values('Rahul Niraula','This is content','This is title',1);
+insert into  post(author,content,title,user_id) values('Rahul Niraula','This is second content','This is second title',1);
+insert into  post(author,content,title,user_id) values('Niraula Rahul','This is third content','This is third title',1);

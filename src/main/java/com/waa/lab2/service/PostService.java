@@ -6,4 +6,12 @@ import java.util.List;
 
 public interface PostService {
     public List<PostDto> search(String title);
+
+    List<PostDto> findAll();
+
+    void deletePost(Long id);
+
+    PostDto save(PostDto postDto);
+
+    PostDto findById(long id);
 }

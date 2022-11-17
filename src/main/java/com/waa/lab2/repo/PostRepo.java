@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface PostRepo extends CrudRepository<Post,Long> {
     public List<Post> findByTitleContaining(String title);
+    public Post findById(long id);
 }
