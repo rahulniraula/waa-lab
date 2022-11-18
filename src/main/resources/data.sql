@@ -27,3 +27,8 @@ VALUES (3, 2);
 insert into  post(author,content,title,user_id) values('Rahul Niraula','This is content','This is title',1);
 insert into  post(author,content,title,user_id) values('Rahul Niraula','This is second content','This is second title',1);
 insert into  post(author,content,title,user_id) values('Niraula Rahul','This is third content','This is third title',1);
+
+insert into comment(name,post_id) values('the product is awesome','1');
+insert into comment(name,post_id) values('Loved the product','1');
+insert into comment(name,post_id) values('the product is awesome again','2');
+insert into comment(name,post_id) values('the product is not as aspected','2');
